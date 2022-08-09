@@ -1,14 +1,14 @@
 class Countries {
-  List<Data>? data;
+  List<CountriesData>? data;
   String? message;
 
   Countries({this.data, this.message});
 
   Countries.fromJson(Map<String, dynamic> json) {
     if (json['data'] != null) {
-      data = <Data>[];
+      data = <CountriesData>[];
       json['data'].forEach((v) {
-        data!.add(Data.fromJson(v));
+        data!.add(CountriesData.fromJson(v));
       });
     }
     message = json['message'];
@@ -24,16 +24,16 @@ class Countries {
   }
 }
 
-class Data {
+class CountriesData {
   int? id;
   String? flagImage;
   String? name;
   String? currency;
   String? prefixNumber;
 
-  Data({this.id, this.flagImage, this.name, this.currency, this.prefixNumber});
+  CountriesData({this.id, this.flagImage, this.name, this.currency, this.prefixNumber});
 
-  Data.fromJson(Map<String, dynamic> json) {
+  CountriesData.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     flagImage = json['flag_image'];
     name = json['name'];

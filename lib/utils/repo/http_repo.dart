@@ -6,13 +6,15 @@ class HttpRepo {
   Future<dynamic> callRequest(
       {required HttpMethods requestType,
       required String methodName,
+      String language = "en",
       dynamic data,
-      Map<String, dynamic> headers = const {"language": "ar"},
       Map<String, dynamic> queryParameters = const {}}) async {
     const baseURl = "https://rental-apis.herokuapp.com/";
 
     final dioClient = Dio()
-      ..options = BaseOptions(baseUrl: baseURl, followRedirects: false, validateStatus: (status) => true, headers: headers);
+      ..options = BaseOptions(baseUrl: baseURl, followRedirects: false, validateStatus: (status) => true, headers: {
+        "language": language,
+      });
     Response response;
 
     switch (requestType) {
